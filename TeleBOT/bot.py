@@ -6,11 +6,10 @@ import os
 import requests
 import subprocess
 
-API_TOKEN = '7577987639:AAHkQcoaidSM82PpHrZM5_GaPvvSTZPLSLc'  # Replace with your actual bot token
+API_TOKEN = '7727845115:AAGt3cl-b-YHFGn0lFPfgzoYk8J6Yq_k7Ts'
 bot = telebot.TeleBot(API_TOKEN)
 
 user_choices = {}
-
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
