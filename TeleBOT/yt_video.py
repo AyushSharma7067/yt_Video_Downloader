@@ -44,11 +44,11 @@ def download_video_with_audio(url, format_id, output_dir='downloads'):
     try:
         ydl_opts = {
             'quiet': True,
-            'cookiefile': cookies_path
             'outtmpl': f'{output_dir}/%(title)s.%(ext)s',
             'format':
             f'{format_id}+bestaudio/best',  # Combine video and best audio
             'merge_output_format': 'mp4'  # Merge into MP4 format
+            'cookiefile': cookies_path
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
