@@ -40,9 +40,11 @@ def download_video_with_audio(url, format_id, output_dir='downloads'):
     :param output_dir: Directory where the video will be saved
     :return: Path to the downloaded video file
     """
+    cookies_path = 'cookies.txt
     try:
         ydl_opts = {
             'quiet': True,
+            'cookiefile': cookies_path
             'outtmpl': f'{output_dir}/%(title)s.%(ext)s',
             'format':
             f'{format_id}+bestaudio/best',  # Combine video and best audio
