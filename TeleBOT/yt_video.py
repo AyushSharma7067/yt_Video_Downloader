@@ -40,7 +40,7 @@ def download_video_with_audio(url, format_id, output_dir='downloads'):
     :param output_dir: Directory where the video will be saved
     :return: Path to the downloaded video file
     """
-    cookies_path = 'cookies.txt
+    cookies_path = 'cookies.txt'
     try:
         ydl_opts = {
             'quiet': True,
