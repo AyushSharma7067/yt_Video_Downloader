@@ -22,14 +22,12 @@ Welcome! Here are the commands you can use:
 """
     bot.reply_to(message, commands)
 
-
 @bot.message_handler(commands=['help'])
 def send_help(message):
     bot.reply_to(
         message,
         "This bot can assist you with downloading YouTube videos (with audio) and thumbnails. Use /start to see all commands."
     )
-
 
 @bot.message_handler(commands=['yt_video'])
 def request_video_url(message):
@@ -38,13 +36,11 @@ def request_video_url(message):
         "Please send the YouTube video link to fetch available formats.")
     bot.register_next_step_handler(msg, handle_video_url)
 
-
 @bot.message_handler(commands=['thumbnail'])
 def request_thumbnail_url(message):
     msg = bot.reply_to(
         message, "Please send the YouTube video link to fetch the thumbnail.")
     bot.register_next_step_handler(msg, handle_thumbnail_request)
-
 
 def handle_thumbnail_request(message):
     try:
@@ -67,7 +63,6 @@ def handle_thumbnail_request(message):
     except Exception as e:
         bot.reply_to(message, f"An error occurred: {str(e)}")
 
-
 def handle_video_url(message):
     try:
         url = message.text.strip()
@@ -88,7 +83,6 @@ def handle_video_url(message):
                      reply_markup=markup)
     except Exception as e:
         bot.reply_to(message, f"An error occurred: {str(e)}")
-
 
 @bot.callback_query_handler(func=lambda call: True)
 def handle_format_selection(call):
@@ -115,7 +109,7 @@ def handle_format_selection(call):
         bot.send_message(call.message.chat.id, f"An error occurred: {str(e)}")
 
 def download_video(video_url):
-    cookies_path = '/Users/PC/Documents/cookies.txt' 
+    cookies_path = 'cookies.txt'
     command = ['yt-dlp', '--cookies', cookies_path, video_url]
     subprocess.run(command)
 
